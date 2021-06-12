@@ -15,18 +15,15 @@ import br.com.springboot.entity.Person;
 import br.com.springboot.exception.PersonNotFoundException;
 import br.com.springboot.mapper.PersonMapper;
 import br.com.springboot.repository.PersonRepository;
+import lombok.AllArgsConstructor;
 
 @Service
+@AllArgsConstructor(onConstructor = @__(@Autowired))
 public class PersonService {
     
     private PersonRepository personRepository;
 
     private final PersonMapper personMapper = PersonMapper.INSTANCE;
-
-    @Autowired
-    public PersonService(PersonRepository personRepository) {
-        this.personRepository = personRepository;
-    }
 
     public MessageResponseDTO createPerson(PersonDTO personDTO){
         Person personToSave = personMapper.toModel(personDTO);

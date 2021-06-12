@@ -20,16 +20,14 @@ import br.com.springboot.dto.request.PersonDTO;
 import br.com.springboot.dto.response.MessageResponseDTO;
 import br.com.springboot.exception.PersonNotFoundException;
 import br.com.springboot.service.PersonService;
+import lombok.AllArgsConstructor;
 
 @RestController
 @RequestMapping("/api/v1/people")
+@AllArgsConstructor(onConstructor = @__(@Autowired))
 public class PersonController {
-    private PersonService personService;
 
-    @Autowired
-    public PersonController(PersonService personService) {
-        this.personService = personService;
-    }
+    private PersonService personService;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
